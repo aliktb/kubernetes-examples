@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejsapp  # Sets Deployment name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejsapp
+  template:
+    metadata:
+      labels:
+        app: nodejsapp
+    spec:
+      containers:
+        - name: nodejsapp
+          image: localhost:5000/nodejsdemo:local1
+          ports:
+            - containerPort: 5432  # Exposes container port
+          envFrom:
+            - configMapRef:
+                name: nodejs-config

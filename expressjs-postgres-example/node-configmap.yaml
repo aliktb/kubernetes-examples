@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nodejs-config
+  labels:
+    app: nodejsapp
+data:
+  DB_HOST: postgres-service
+  DB_USER: admin
+  DB_PASSWORD: pgpassword
+  DB_NAME: postgresdb
+  DB_PORT: "5432"

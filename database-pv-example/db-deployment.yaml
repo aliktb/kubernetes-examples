@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-postgres-db
+spec:
+  selector:
+    matchLabels:
+      run: my-postgres-db
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: my-postgres-db
+    spec:
+      containers:
+      - name: my-postgres-db
+        image: postgres:14
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
